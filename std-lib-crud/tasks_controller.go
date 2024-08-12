@@ -84,12 +84,12 @@ func (tc *TasksController) Put(wr http.ResponseWriter, req *http.Request) {
 }
 
 func (tc *TasksController) Post(wr http.ResponseWriter, req *http.Request) {
+	// TODO: know why this is not encoding
 	bodyBytes, err := io.ReadAll(req.Body)
 	if err != nil {
 		log.Println("error reading body: ", err)
 		http.Error(wr, "Could not read the body", http.StatusInternalServerError)
 	}
-	// just puttin this here
 
 	var todos []Todo
 	err = json.Unmarshal(bodyBytes, &todos)
