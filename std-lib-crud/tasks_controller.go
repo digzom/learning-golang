@@ -89,6 +89,7 @@ func (tc *TasksController) Post(wr http.ResponseWriter, req *http.Request) {
 		log.Println("error reading body: ", err)
 		http.Error(wr, "Could not read the body", http.StatusInternalServerError)
 	}
+	// just puttin this here
 
 	var todos []Todo
 	err = json.Unmarshal(bodyBytes, &todos)
