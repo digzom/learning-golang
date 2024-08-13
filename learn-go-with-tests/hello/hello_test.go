@@ -3,11 +3,24 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	got := Hello("Dickson")
-	want := "Hello, Dickson!"
+	t.Run("saying hello", func(t *testing.T) {
+		got := Hello("Dickson")
+		want := "Hello, Dickson!"
 
+		assert(t, got, want)
+	})
+
+	t.Run("says 'Hello, World!' when an empty string is supplied", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello, World!"
+
+		assert(t, got, want)
+	})
+}
+
+func assert(t testing.TB, got, want string) {
+	t.Helper()
 	if got != want {
-		// %q wraps the value in double quotes
 		t.Errorf("got %q want %q", got, want)
 	}
 }

@@ -2,9 +2,13 @@ package main
 
 import "fmt"
 
+const helloPrefix = "Hello, "
+
 func Hello(receiver string) string  {
-	return "Hello, " + "Dickson" + "!"
-	
+	if receiver == "" {
+		receiver = "World"
+	}
+	return helloPrefix + receiver + "!"
 }
 
 func main()  {
